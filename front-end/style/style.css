@@ -1,8 +1,13 @@
+/* index*/
+
 header {
     background-color: #f3e9f1!important;
 }
 .navbar-expand-lg {
     justify-content: space-around;
+}
+.nav-link:hover {
+    border: black 2px solid;
 }
 .container-fluid {
     max-width: 1500px;
@@ -11,4 +16,30 @@ header {
 .card-image {
     width: 100%;
     height: 300px;
+    border-radius: 17px 17px 0px 0px;
+    object-fit: cover;
+}
+.card {
+    border: #f3e9f1 solid 5px;
+    border-radius: 20px;
+    background-color: #f3e9f1;
+    margin: auto;
+
+}
+a{
+    text-decoration: none!important;
+    color: black;
+}
+.card:hover {
+    transform: scale(1.1);
+    transition: 250ms ease-in-out;
+}
+.list-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+footer {
+    background-color: #f3e9f1;
+    padding-top: 30px!important;
 }
