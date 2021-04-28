@@ -43,3 +43,22 @@ footer {
     background-color: #f3e9f1;
     padding-top: 30px!important;
 }
+
+/* product */
+
+.color {
+    height: 50px; 
+    cursor: pointer; 
+    
+}
+.color:hover {
+    transition: 250ms ease;
+    transform: scale(1.1);
+}
+.teddy-card {
+    border: #f3e9f1 solid 5px;
+    border-radius: 20px;
+    background-color: #f3e9f1;
+    margin: auto;
+    margin-bottom: 30px;
+}
