@@ -24,7 +24,7 @@ fetch('http://localhost:3000/api/teddies/')
             
 
             const img = document.getElementById('imageProduct');
-            //img.setAttribute ( img.src);
+            img.setAttribute("src", product.imageUrl);
 
             const description = document.getElementById('descriptionProduct');
             description.innerHTML = product.description[0];
@@ -33,7 +33,7 @@ fetch('http://localhost:3000/api/teddies/')
             price.innerHTML = product.price[0];
             
             const link = document.getElementById('pageProduct');
-            //link.setAttribute( 'produi.html?id=' + link._id)
+            link.setAttribute("product.html","product.html?id=" + product._id);
 
             const section = document.getElementById('sectionProduct');
             section.appendChild(product1);
