@@ -7,7 +7,7 @@
     <meta name="description" content="Orinoco- site spécialisé dans la vente de nounours, doudou et d'ours en peluche faits à la main!">
     <title>Orinoco-Accueil</title>
 
-    <!--Bootstrap CSS only -->
+    <!-- Bootstrap CSS only -->
     <link rel="stylesheet" type="text/css" href="style/bootstrap.min.css" >
     <link rel="stylesheet" href="style/style.css">
 
@@ -16,7 +16,7 @@
 </head>
 <body>
     <div class= "container-fluid">
-        <!--Header-->
+        <!-- Header -->
         <header>
             <nav class= "col navbar navbar-expand-lg">
                 <a class= "navbar-brand" href="index.html"> 
@@ -29,73 +29,30 @@
                 </ul>
             </nav>
         </header>
-        <!--Header-->
+        <!-- Header -->
 
-        <!--jumbotron-->
+        <!-- jumbotron -->
         <div class= "jumbotron mt-4 mb-5 text-center">
             <h1>Découvrez la nouvelle collection de Nounours!</h1>
         </div>
-        <!--jumbotron-->
+        <!-- jumbotron -->
 
-        <!--section-->
-        <section id="teddy-list" class="list-card">
-            <div class="card teddy-card col-12 col-md-6 col-lg-4 my-2 mx-auto">
-                <a href="page/product.html" aria-label="page norbert">
-                    <img class="card-image" src="image/teddy_1.jpg" height="250" width="auto" alt="">
-                    <div class="card-body p-0">
-                        <h2 class="card-title">Norbert</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <p class="card-price text-end m-0 h4"><strong>29€</strong></p>
+        <!--section product-->
+        <section id="sectionProduct" class="list-card">
+            <div id="cardProductTemplate" class="card d-none">
+                <a id="pageProduct" href="">
+                    <img id="imageProduct" class="card-image" src="" alt="">
+                    <div class="card-body">
+                        <h2 id="nameProduct"></h2>
+                        <p id="descriptionProduct" class="card-text"></p>
+                        <p id="priceProduct" class="card-price"></p>
                     </div>
-                </a> 
-            </div>  
-            
-            <div class="card teddy-card col-12 col-md-6 col-lg-4 my-2 mx-auto">
-                <a href="page/product.html" aria-label="page arnold">
-                    <img class="card-image" src="image/teddy_2.jpg" height="250" alt="">
-                    <div class="card-body p-0">
-                        <h2 class="card-title">Arnold</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <p class="card-price text-end m-0 h4"><strong>39€</strong></p>
-                    </div>
-                </a> 
-            </div>    
-
-            <div class="card teddy-card col-12 col-md-6 col-lg-4 my-2 mx-auto">
-                <a href="page/product.html" aria-label="page lenny and carl">
-                    <img class="card-image" src="image/teddy_3.jpg" height="250" alt="">
-                    <div class="card-body p-0">
-                        <h2 class="card-title">Lenny and Carl</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <p class="card-price text-end m-0 h4"><strong>59€</strong></p>
-                    </div>
-                </a> 
-            </div>    
-
-            <div class="card teddy-card col-12 col-md-6 col-lg-4 my-2 mx-auto">
-                <a href="page/product.html" aria-label="page Gustav">
-                    <img class="card-image" src="image/teddy_4.jpg" height="250" alt="">
-                    <div class="card-body p-0">
-                        <h2 class="card-title">Gustav</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <p class="card-price text-end m-0 h4"><strong>45€</strong></p>
-                    </div>
-                </a> 
-            </div>    
-
-            <div class="card teddy-card col-12 col-md-6 col-lg-4 my-2 mx-auto">
-                <a href="page/product.html" aria-label="page Garfunkel">
-                    <img class="card-image" src="image/teddy_5.jpg" height="250" alt="">
-                    <div class="card-body p-0">
-                        <h2 class="card-title">Garfunkel</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <p class="card-price text-end m-0 h4"><strong>55€</strong></p>
-                    </div>
-                </a> 
-            </div>       
-            
+                </a>
+            </div>            
         </section>
+        <!-- section product -->
 
+        <!-- footer -->
         <footer class="container-fluid">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4 mx-auto">
@@ -125,7 +82,7 @@
             
 
         </footer>
-
+        <!-- footer -->
 
     </div>
     
