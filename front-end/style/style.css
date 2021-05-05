@@ -31,7 +31,7 @@ a{
     color: black;
 }
 .card:hover {
-    transform: scale(1.1);
+    transform: scale(1.02);
     transition: 250ms ease-in-out;
 }
 .list-card {
@@ -42,6 +42,7 @@ a{
 footer {
     background-color: #f3e9f1;
     padding-top: 30px!important;
+    margin-top: 50px!important;
 }
 
 /* product */
