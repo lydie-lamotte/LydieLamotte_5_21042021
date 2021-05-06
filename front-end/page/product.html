@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="../style/style.css">
 
     <!-- javascript -->
-    <script src="../index.js" defer ></script>
     <script src="../js/product.js" defer></script>
 </head>
 <body>
@@ -39,21 +38,28 @@
         <!--jumbotron-->
 
         <!--Product-->
-        <section class=" teddy-card row">
-            <div class="product-image">
-                <img id="productImage">
+        <section class=" teddyCard d-flex">
+            <div class="product-image h-25">
+                <img id="productImage" style="height: 470px; width: 720" alt="">
             </div>
 
-            <div class="product-description flex-wrap">
-                <h1 id="productName"></h1>
-                <p id="productDescription"></p>
-                <p class="h5 text-success">En stock: 10 produits disponibles</p>
-                <h2 class="h5">Couleurs disponibles: </h2>
-                <div id="productColors" class="row "></div>                   
-                
+            <div class="product-description">
+                <h1 id="productName" class="text-center"></h1>
+                <p id="productDescription" class="p-4"></p>
+                <p id="productPrice" class="h4 px-4"></p>
+                <p class="h5 text-success p-4">En stock: 10 produits disponibles</p>
+                <form>
+                    <label for="colorChoise" class="h5 px-4">Couleur diponible: </label>
+                    <select  name ="colorChoise" id="colorChoise" class="m-4 px-4">
+                        <option  value="1"></option>
+                        <option  value="2"></option>
+                        <option  value="3"></option>
+                        <option  value="4"></option>
+                    </select>
+                </form>          
             </div>
 
-            <button id="addCart" class="btn btn-primary">Ajouter à mon panier</button>
+            <button id="addCart" type="submit" class="btn btn-primary w-25 h-25 ">Ajouter à mon panier</button>
         </section>
 
         <footer class="container-fluid">

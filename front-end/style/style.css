@@ -20,7 +20,7 @@ header {
     object-fit: cover;
 }
 .card {
-    border: #f3e9f1 solid 5px;
+    border: #f3e9f1 solid 15px;
     border-radius: 20px;
     background-color: #f3e9f1;
     margin: auto;
@@ -49,16 +49,14 @@ footer {
 
 .color {
     height: 50px; 
-    cursor: pointer; 
-    
+    cursor: pointer;     
 }
 .color:hover {
     transition: 250ms ease;
     transform: scale(1.1);
 }
-.teddy-card {
-    border: #f3e9f1 solid 5px;
-    border-radius: 20px;
+.teddyCard {
+    border: #f3e9f1 solid 20px;
     background-color: #f3e9f1;
     margin: auto;
     margin-bottom: 30px;
