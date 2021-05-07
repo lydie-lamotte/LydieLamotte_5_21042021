@@ -5,6 +5,7 @@ const id = queryString_url_id.slice(4);
 console.log(id)
 
 // Récuperer le produit dans l'Api avec son id
+const colorSelect = document.getElementById("colorChoise");
 
 fetch("http://localhost:3000/api/teddies/" + id)
     .then (response => response.json())
@@ -26,15 +27,18 @@ fetch("http://localhost:3000/api/teddies/" + id)
         const price = document.getElementById("productPrice");
         price.innerHTML = elements.price / 100 + ".00€";
 
-        for (let i = 0 ; i < colors.length; i = i + 1) {
+        for (let i = 0 ; i < colors.length; i++) {
             
             const color = colors[i];
             console.log(color)
-            const colorSelect = document.querySelector("option");
-            colorSelect.setAttribute("value",color)
-            colorSelect.innerHTML = color;
             
-            
+            // creation d'une balise option couleur
+            const colorOption = document.createElement("option");
+            colorOption.setAttribute("value",color);
+            colorOption.innerHTML = color;
+
+            //ajout de l'option dans le select des couleurs
+            colorSelect.appendChild(colorOption);
         }
         
     })
