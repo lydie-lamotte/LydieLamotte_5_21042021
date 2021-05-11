@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Orinoco- site spécialisé dans la vente de nounours, doudou et d'ours en peluche faits à la main!">
-    <title>Orinoco-Produit</title>
+    <title>Orinoco-Panier</title>
 
     <!--Bootstrap CSS only -->
     <link rel="stylesheet" href="../style/bootstrap.min.css">
     <link rel="stylesheet" href="../style/style.css">
 
 
-    <script src="../index.js" defer></script>
+    <script src="../js/cart.js" defer></script>
 </head>
 <body>
     <div class= "container-fluid">
@@ -31,11 +31,84 @@
         </header>
         <!--Header-->
 
+        <!-- Section mon panier-->
+        <section>
+            <h1 class="my-5">- Mon panier -</h1>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Produit</th>
+                    <th scope="col">Quantité</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row" id="nameProduct"></th>
+                    <td>
+                        <form>
+                            <label for="quantity">
+                                <input type="number" id="quantity" name="quantity">
+                            </label>
+                        </form>
+                    </td>
+                    <td id="priceProduct"></td>
+                    <td id="totalPriceProduct"></td>
+                  </tr>
+                  <tr>
+                    <td colspan="3" class="">Total de la commande</td>
+                    <td id="totalPrice"></td>
+                  </tr>
+                </tbody>
+              </table>
+        </section>
+        <!-- Section mon panier-->
+
+        <!-- Section coordonnées-->
+        <section>
+            <h2 class="mt-5 h1">- Adresse de livraison -</h2>
+            <form class="d-flex flex-wrap flex-column flex-md-row flex-lg-row mt-5">
+                <div class="form-group m-2 ">
+                    <label for="lastName">Nom</label>
+                    <input id="lastName" type="text" name="lastName" class="form-control" required>
+                </div>
+                <div class="form-group m-2">
+                    <label for="firstName">Prénom</label>
+                    <input id="firstName" type="text" name="firstName" class="form-control" required>
+                </div>
+                <div class="form-group m-2">
+                    <label for="adress">Adresse</label>
+                    <input id="adress" type="text" name="adress" style="width: 600px;" class="form-control" required>
+                </div>
+                <div class="form-group m-2">
+                    <label for="zipCode">Code Postal</label>
+                    <input id="zipCode" type="tel" name="zipCode" pattern="[0-9]{,5}" class="form-control" required>
+                </div>
+                <div class="form-group m-2">
+                    <label for="city">Ville</label>
+                    <input id="city" type="text" name="city" class="form-control" required>
+                </div>
+                <div class="form-group m-2">
+                    <label for="mail">Mail</label>
+                    <input id="mail" type="email" name="mail" style="width: 400px;" class="form-control" required>
+                </div>
+                <div class="form-group m-2">
+                    <label for="phone">Téléphone</label>
+                    <input id="phone" type="tel" name="phone" class="form-control" required>
+                </div>                
+            </form>
+
+            <div class="btn m-2 d-flex justify-content-end">
+                <a class="btn btn-primary" href="#" role="button">Valider ma commande</a>
+            </div>
+        </section>
 
 
 
 
 
+        <!-- Footer-->
         <footer class="container-fluid">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4 mx-auto">
@@ -63,5 +136,6 @@
                 </div>
             </div>
         </footer>
+        <!-- Footer -->
 </body>
 </html>

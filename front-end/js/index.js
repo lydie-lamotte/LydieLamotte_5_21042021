@@ -44,7 +44,7 @@ fetch("http://localhost:3000/api/teddies/")
     .catch((error) => {
         console.log(error);
     }) 
-
+  
 
 
 

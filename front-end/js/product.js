@@ -72,6 +72,21 @@ fetch("http://localhost:3000/api/teddies/" + id)
 
             }
             console.log(addProduct)
+            
+            // LOCAL STORAGE
+
+            // Envoi des infos dans le storage en format json
+            let addStorage = JSON.parse(localStorage.getItem("product"));
+
+            if(addStorage === null) {
+                addStorage = []; //création d'un tableau
+                addStorage.push(addProduct); // Envoi du détail des produits dans le tableau
+                localStorage.setItem("product", JSON.stringify(addStorage)); // converti le format en JSON
+
+            } else{
+                addStorage.push(addProduct);
+                localStorage.setItem("product", JSON.stringify(addStorage)); 
+            }
     
 
             })
@@ -80,6 +95,8 @@ fetch("http://localhost:3000/api/teddies/" + id)
             document.getElementById("addCart").addEventListener("click",function(){
                 alert("Produit ajouté au panier");
             });
+
+            
     })
 
     .catch((error) => {
