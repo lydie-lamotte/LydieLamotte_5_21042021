@@ -34,34 +34,45 @@
         <!-- Section mon panier-->
         <section>
             <h1 class="my-5">- Mon panier -</h1>
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Produit</th>
-                    <th scope="col">Quantité</th>
-                    <th scope="col">Prix</th>
-                    <th scope="col">Total</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row" id="nameProduct"></th>
-                    <td>
-                        <form>
-                            <label for="quantity">
-                                <input type="number" id="quantity" name="quantity">
-                            </label>
-                        </form>
-                    </td>
-                    <td id="priceProduct"></td>
-                    <td id="totalPriceProduct"></td>
-                  </tr>
-                  <tr>
-                    <td colspan="3" class="">Total de la commande</td>
-                    <td id="totalPrice"></td>
-                  </tr>
-                </tbody>
-              </table>
+            <div id="sectionCart">
+                <table  id="sectionTable" class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Produit</th>
+                        <th scope="col">Quantité</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Supprimer</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tableProduct">
+                        <tr id="tableTemplate" scope ="row" class="d-none">
+                            <td id="nameProduct"></td>
+                            <td >
+                                <form>
+                                    <label for="quantity">
+                                        <input type="text" id="quantity" name="quantity"  pattern="[0-9]">
+                                    </label>
+                                </form>
+                            </td>
+                            <td id="priceProduct"></td>
+                            <td id="deletedProduct">
+                                <button type="reset" id="buttonReset" class="btn btn-outline-secondary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                    </svg>
+                                </button>
+                            </td>
+                            <td id="totalPriceProduct"></td>
+                        </tr>
+                    </tbody> 
+                </table>
+            </div> 
+            <div class="d-flex justify-content-between" >                 
+                <h3 class="h5">Total de la commande<h3>
+                <p id="totalPrice"></p>                       
+            </div>
         </section>
         <!-- Section mon panier-->
 
@@ -69,31 +80,31 @@
         <section>
             <h2 class="mt-5 h1">- Adresse de livraison -</h2>
             <form class="d-flex flex-wrap flex-column flex-md-row flex-lg-row mt-5">
-                <div class="form-group m-2 ">
+                <div class="form-group m-2 col-sm-12 col-md-6">
                     <label for="lastName">Nom</label>
                     <input id="lastName" type="text" name="lastName" class="form-control" required>
                 </div>
-                <div class="form-group m-2">
+                <div class="form-group m-2 col-sm-12 col-md-6">
                     <label for="firstName">Prénom</label>
                     <input id="firstName" type="text" name="firstName" class="form-control" required>
                 </div>
-                <div class="form-group m-2">
+                <div class="form-group m-2 col-sm-12 col-md-6">
                     <label for="adress">Adresse</label>
-                    <input id="adress" type="text" name="adress" style="width: 600px;" class="form-control" required>
+                    <input id="adress" type="text" name="adress" class="form-control" required>
                 </div>
-                <div class="form-group m-2">
+                <div class="form-group m-2 col-sm-12 col-md-6">
                     <label for="zipCode">Code Postal</label>
                     <input id="zipCode" type="tel" name="zipCode" pattern="[0-9]{,5}" class="form-control" required>
                 </div>
-                <div class="form-group m-2">
+                <div class="form-group m-2 col-sm-12 col-md-6">
                     <label for="city">Ville</label>
                     <input id="city" type="text" name="city" class="form-control" required>
                 </div>
-                <div class="form-group m-2">
+                <div class="form-group m-2 col-sm-12 col-md-6">
                     <label for="mail">Mail</label>
-                    <input id="mail" type="email" name="mail" style="width: 400px;" class="form-control" required>
+                    <input id="mail" type="email" name="mail" class="form-control" required>
                 </div>
-                <div class="form-group m-2">
+                <div class="form-group m-2 col-sm-12 col-md-6">
                     <label for="phone">Téléphone</label>
                     <input id="phone" type="tel" name="phone" class="form-control" required>
                 </div>                
