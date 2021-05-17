@@ -7,8 +7,11 @@ const id = queryString_url_id.slice(4);
 console.log(id)
 
 
-// Sélectionner la balise select
+// Sélectionner la balise select option
 const colorSelect = document.getElementById("colorChoise");
+
+//Sélectionne la balise select quantité
+const QuantitySelect = document.getElementById("quantityChoise")
 
 // Récupère le produit dans l'Api avec son id
 fetch("http://localhost:3000/api/teddies/" + id)
@@ -17,7 +20,8 @@ fetch("http://localhost:3000/api/teddies/" + id)
         console.log(data)
 
         const elements = data;
-        const colors = elements.colors
+        const colors = elements.colors;
+        
 
         // Création de la carte produit
         const image = document.getElementById("productImage");
@@ -32,8 +36,8 @@ fetch("http://localhost:3000/api/teddies/" + id)
         const price = document.getElementById("productPrice");
         price.innerHTML = elements.price / 100 + ".00€";
 
-        for (let i = 0 ; i < colors.length; i++) {
-            
+        //option color
+        for (let i = 0 ; i < colors.length; i++) {            
             const color = colors[i];
 
             // creation d'une balise option couleur
@@ -44,15 +48,22 @@ fetch("http://localhost:3000/api/teddies/" + id)
             //ajout de l'option dans le select des couleurs
             colorSelect.appendChild(colorOption);
         }
-            // PANIER
+        //option quantité
+        for (let j = 0; j < 10; j++) {
+            let choice  = j +1 ;
+            
 
-            //sélectionner l'id de l'option
-            const idOption = document.getElementById("colorChoise");
-
+            const quantityOption = document.createElement("option");
+            quantityOption.setAttribute("value",choice);
+            quantityOption.innerHTML = choice;
+            
+            QuantitySelect.appendChild(quantityOption);
+           
+        }
+            /////////////////////////PANIER
 
             // Sélectionner le bouton pour ajouter les produits au panier
             const addCart = document.getElementById("addCart");
-            console.log(addCart)
 
             // Utilisation du bouton addCart pour envoyer vers le panier
             addCart.addEventListener("click",(e) => {
@@ -61,28 +72,34 @@ fetch("http://localhost:3000/api/teddies/" + id)
             //sélectionne et ajoute l'id de l'option
             const idOption = document.getElementById("colorChoise");
             const idOptionSelected = idOption.value;
-    
+
+            //sélectionne et ajoute la quantité        
+            const choiceQuantity = document.getElementById("quantityChoise");
+            const choiceQuantitySelected = choiceQuantity.value;
+            console.log(choiceQuantitySelected)
+           
+             
             //sélectionne et ajoute les détails du produit
             let addProduct = {
                 idProduct : id,
                 titleProduct : elements.name,
                 colorProduct : idOption.value,
-                quantite: 1,
+                quantite: choiceQuantitySelected,
                 priceProduct : elements.price/100 +",00€",
+                totalProduct : (elements.price * choiceQuantitySelected)/100 +",00€",
 
             }
             console.log(addProduct)
             
             // LOCAL STORAGE
-
+           
             // Envoi des infos dans le storage en format json
             let addStorage = JSON.parse(localStorage.getItem("product"));
-
+            
             if(addStorage === null) {
                 addStorage = []; //création d'un tableau
                 addStorage.push(addProduct); // Envoi du détail des produits dans le tableau
                 localStorage.setItem("product", JSON.stringify(addStorage)); // converti le format en JSON
-
             } else{
                 addStorage.push(addProduct);
                 localStorage.setItem("product", JSON.stringify(addStorage)); 
