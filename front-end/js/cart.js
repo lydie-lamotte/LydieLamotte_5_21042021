@@ -4,6 +4,7 @@ console.log(addStorage)
 
 const items = addStorage;
 
+// Sélectionner la balise tableau 
 const section = document.getElementById("sectionTable");
 
 
@@ -39,3 +40,34 @@ if(addStorage === null) {
    
     
 }
+////////////////////////////////////Formulaire///////////////////////////////////////////
+
+const addStorageForm = document.getElementById("sendCart");
+// Sélectionne le bouton d'envoi du formulaire
+addStorageForm.addEventListener("click",(e) => {
+    e.preventDefault()
+
+    const $lastName = document.getElementById("lastName");
+    const $firstName = document.getElementById("firstName");
+    const $address = document.getElementById("address");
+    const $zipCode = document.getElementById("zipCode");
+    const $city = document.getElementById("city");
+    const $email = document.getElementById("mail");
+
+
+    //sélectionne et ajoute les détails du produit et du formulaire dans un objet
+    let formStorage = {        
+        lastName: $lastName.value,
+        firstName: $firstName.value,
+        address: $address.value,
+        zipCode: $zipCode.value,
+        city: $city.value,
+        email: $email.value,        
+    }
+    console.log(formStorage)
+    // Envoi des infos formulaire dans le storage
+        
+    localStorage.setItem("form", JSON.stringify(formStorage));
+    
+
+})

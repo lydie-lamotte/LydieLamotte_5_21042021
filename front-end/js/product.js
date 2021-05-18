@@ -1,4 +1,4 @@
-// PRODUIT
+//////////////////////// PRODUIT////////////////////////////////////
 
 // Récupère l'id
 
@@ -60,7 +60,7 @@ fetch("http://localhost:3000/api/teddies/" + id)
             QuantitySelect.appendChild(quantityOption);
            
         }
-            /////////////////////////PANIER
+            /////////////////////////PANIER/////////////////////////////////////
 
             // Sélectionner le bouton pour ajouter les produits au panier
             const addCart = document.getElementById("addCart");
@@ -79,7 +79,7 @@ fetch("http://localhost:3000/api/teddies/" + id)
             console.log(choiceQuantitySelected)
            
              
-            //sélectionne et ajoute les détails du produit
+            //sélectionne et ajoute les détails du produit dans un objet
             let addProduct = {
                 idProduct : id,
                 titleProduct : elements.name,
@@ -91,7 +91,7 @@ fetch("http://localhost:3000/api/teddies/" + id)
             }
             console.log(addProduct)
             
-            // LOCAL STORAGE
+            ////////////////////// LOCAL STORAGE//////////////////////////////////////
            
             // Envoi des infos dans le storage en format json
             let addStorage = JSON.parse(localStorage.getItem("product"));
@@ -105,7 +105,6 @@ fetch("http://localhost:3000/api/teddies/" + id)
                 localStorage.setItem("product", JSON.stringify(addStorage)); 
             }
     
-
             })
 
             // Message de validation du produit dans le panier

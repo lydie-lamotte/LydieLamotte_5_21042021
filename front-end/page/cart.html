@@ -33,7 +33,7 @@
         <!-- Section mon panier-->
         <section>
             <h1 class="my-5">- Mon panier -</h1>
-            <div id="sectionCart" class="table-responsive-sm">
+            <div id="sectionCart" class="table-responsive-sm table-responsive-md">
                 <table  id="sectionTable" class="table">
                     <thead>
                     <tr>
@@ -83,8 +83,8 @@
                     <input id="firstName" type="text" name="firstName" class="form-control" required>
                 </div>
                 <div class="form-group m-2 col-sm-12 col-md-6">
-                    <label for="adress">Adresse</label>
-                    <input id="adress" type="text" name="adress" class="form-control" required>
+                    <label for="address">Adresse</label>
+                    <input id="address" type="text" name="address" class="form-control" required>
                 </div>
                 <div class="form-group m-2 col-sm-12 col-md-6">
                     <label for="zipCode">Code Postal</label>
@@ -95,17 +95,14 @@
                     <input id="city" type="text" name="city" class="form-control" required>
                 </div>
                 <div class="form-group m-2 col-sm-12 col-md-6">
-                    <label for="mail">Mail</label>
+                    <label for="mail">E-mail</label>
                     <input id="mail" type="email" name="mail" class="form-control" required>
                 </div>
-                <div class="form-group m-2 col-sm-12 col-md-6">
-                    <label for="phone">Téléphone</label>
-                    <input id="phone" type="tel" name="phone" class="form-control" required>
-                </div>                
+                                
             </form>
 
-            <div class="btn m-2 d-flex justify-content-center justify-content-lg-end">
-                <a class="btn btn-primary" href="#" role="button">Commander</a>
+            <div class="btn m-5 d-flex justify-content-center justify-content-lg-end">
+                <button id="sendCart" class="btn btn-primary" type="submit">Commander</button>
             </div>
         </section>
 
@@ -114,9 +111,9 @@
 
 
         <!-- Footer-->
-        <footer class="container-fluid">
+        <footer class="container-fluid p-4">
             <div class="row">
-                <div class="col-12 col-md-6 col-lg-4 mx-auto">
+                <div class="col-12 col-md-12 col-lg-4">
                     <h4>Aide</h4>
                     <ul>
                         <li>Contacter le Service Client</li>
@@ -124,7 +121,7 @@
                     </ul>
                 </div>
 
-                <div class="col-12 col-md-6 col-lg-4 mx-auto">
+                <div class="col-12 col-md-12 col-lg-4">
                     <h4>Nos Services</h4>
                     <ul>
                         <li>Satisfait ou remboursé</li>
@@ -132,7 +129,7 @@
                     </ul>
                 </div>
 
-                <div class="col-12 col-md-6 col-lg-4 mx-auto">
+                <div class="col-12 col-md-12 col-lg-4">
                     <h4>Nos garanties</h4>
                     <ul>
                         <li>Mentions légales</li>
