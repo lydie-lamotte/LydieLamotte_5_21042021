@@ -34,8 +34,9 @@ fetch("http://localhost:3000/api/teddies/" + id)
         description.innerHTML = elements.description;
 
         const price = document.getElementById("productPrice");
-        price.innerHTML = elements.price / 100 + ".00€";
+        price.innerHTML = elements.price / 100 + "€";
 
+        
         //option color
         for (let i = 0 ; i < colors.length; i++) {            
             const color = colors[i];
@@ -76,8 +77,7 @@ fetch("http://localhost:3000/api/teddies/" + id)
             //sélectionne et ajoute la quantité        
             const choiceQuantity = document.getElementById("quantityChoise");
             const choiceQuantitySelected = choiceQuantity.value;
-            console.log(choiceQuantitySelected)
-           
+             
              
             //sélectionne et ajoute les détails du produit dans un objet
             let addProduct = {
@@ -85,12 +85,11 @@ fetch("http://localhost:3000/api/teddies/" + id)
                 titleProduct : elements.name,
                 colorProduct : idOption.value,
                 quantite: choiceQuantitySelected,
-                priceProduct : elements.price/100 +",00€",
-                totalProduct : (elements.price * choiceQuantitySelected)/100 +",00€",
-
+                priceProduct : elements.price,
+                totalProduct : (elements.price * choiceQuantitySelected),
             }
-            console.log(addProduct)
-            
+
+                       
             ////////////////////// LOCAL STORAGE//////////////////////////////////////
            
             // Envoi des infos dans le storage en format json

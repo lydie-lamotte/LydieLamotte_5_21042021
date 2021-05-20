@@ -32,7 +32,7 @@
 
         <!-- Section mon panier-->
         <section>
-            <h1 class="my-5">- Mon panier -</h1>
+            <h1 class="my-5"> Mon panier</h1>
             <div id="sectionCart" class="table-responsive-sm table-responsive-md">
                 <table  id="sectionTable" class="table">
                     <thead>
@@ -64,16 +64,16 @@
                 </table>
             </div> 
             <div class="d-flex justify-content-between " >                 
-                <h3 class="h5 col-sm-6">Total de la commande :</h3>
-                <p id="totalPrice" class="col-sm-6"></p>                       
+                <h3 class="h4 col-sm-6">Total de la commande :</h3>
+                <p id="totalPrice" class="h5 col-sm-6"></p>                       
             </div>
         </section>
         <!-- Section mon panier-->
 
         <!-- Section coordonnées-->
         <section>
-            <h2 class="mt-5 h1">- Adresse de livraison -</h2>
-            <form class="d-flex flex-wrap flex-column flex-md-row flex-lg-row mt-5">
+            <h2 class="mt-5 h1"> Adresse de livraison</h2>
+            <form class="d-flex flex-wrap flex-column flex-md-row flex-lg-row mt-5" id="formBuyer">
                 <div class="form-group m-2 col-sm-12 col-md-6">
                     <label for="lastName">Nom</label>
                     <input id="lastName" type="text" name="lastName" class="form-control" required>
@@ -88,7 +88,7 @@
                 </div>
                 <div class="form-group m-2 col-sm-12 col-md-6">
                     <label for="zipCode">Code Postal</label>
-                    <input id="zipCode" type="tel" name="zipCode" pattern="[0-9]{,5}" class="form-control" required>
+                    <input id="zipCode" type="tel" name="zipCode" pattern="[0-9]{5}" class="form-control" required>
                 </div>
                 <div class="form-group m-2 col-sm-12 col-md-6">
                     <label for="city">Ville</label>
@@ -97,15 +97,15 @@
                 <div class="form-group m-2 col-sm-12 col-md-6">
                     <label for="mail">E-mail</label>
                     <input id="mail" type="email" name="mail" class="form-control" required>
+                    <small></small>
                 </div>
-                                
+                <div class="btn d-flex justify-content-center">
+                    <button id="submit" class="btn btn-primary d-flex justify-content-center justify-content-lg-end" type="submit">Commander</button>
+                </div>                
             </form>
-
-            <div class="btn m-5 d-flex justify-content-center justify-content-lg-end">
-                <button id="sendCart" class="btn btn-primary" type="submit">Commander</button>
-            </div>
+            <p style="color: red;" id="erreur"></p>
         </section>
-
+        <!-- Section coordonnées-->
 
 
 
