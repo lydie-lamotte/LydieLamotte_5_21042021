@@ -15,29 +15,34 @@ if(addStorage === null) {
 
         const item = items[i];
         console.log(item)
-        const name = document.getElementById("nameProduct");
-        name.innerHTML = item.titleProduct + " - " +  item.colorProduct;
+       
+        const tableProduct = ` 
+        <tr scope ="row">
+        <td>${item.titleProduct} - ${item.colorProduct}</td>
+        <td>${item.quantite}</td>
+        <td>${item.priceProduct/100}.00€</td>
+        </td>
+        <td>
+            <button type="reset" id="buttonReset" class="btn btn-outline-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                </svg>
+            </button>
+        </td> 
+        <td>${item.totalProduct/100}.00€</td>
+        </tr>`
+        section.innerHTML += tableProduct;
 
-        const quantityItem = document.getElementById("quantityProduct");
-        quantityItem.innerHTML = item.quantite;
-        
-
-        const price = document.getElementById("priceProduct");
-        price.innerHTML = item.priceProduct/100 + "€";
-
-        const totalPrice = document.getElementById("totalPriceProduct");
-        totalPrice.innerHTML = item.totalProduct/100 + "€";
-
-        // Supprimer un produit
-        let deleted = document.querySelectorAll("buttonReset")
-        
-        for(let j = 0; j < deleted.length; j++) {
-            deleted.addEventListener("click",(e) => {
-                e.preventDefault;
-                
+        //Supprimer un produit
+        /*let deleted = document.getElementById("buttonReset")      
+       
+        deleted.addEventListener("click",(e) => {
+            e.preventDefault;
+            deleted.splice(index,1);               
                
-            })
-        }
+            })*/
+        
 
         //Création du total de la commande 
         let arrayPrice = [];
@@ -53,17 +58,6 @@ if(addStorage === null) {
         const totalCommand = document.getElementById("totalPrice");
         totalCommand.innerHTML = total/100 + "€";
 
-        //choisi l'élément à copier
-        const productElement = document.getElementById("tableTemplate");
-        const productCart = productElement.cloneNode(true); //défini l'élément à reproduire
-        productCart.classList.remove("d-none"); //retire le display none
-        productCart.removeAttribute("id"); //retire son id
-        //introduit le clone dans la section 
-        section.appendChild(productCart); 
-           
-        // Ajoute le total a mon objet produit
-        //addStorage.totalCommande = totalCommand;
-        //console.log(addStorage)
     }
     
     
@@ -87,9 +81,9 @@ addStorageForm.addEventListener("click",(e) => {
     
     
     //sélectionne et ajoute les détails du formulaire dans un objet
-    let contact = {        
+    let contact = {  
+        firstName: $firstName.value,      
         lastName: $lastName.value,
-        firstName: $firstName.value,
         address: $address.value,
         city: $city.value,
         email: $email.value,        
@@ -97,17 +91,25 @@ addStorageForm.addEventListener("click",(e) => {
 
        
     // Validation des informations du formulaire et envoi dans le localstorage
-    if ($lastName.value.length == null || $firstName.value.length == null || $address.value.length == null || $city.value.length == null || $email.value.length == null) { 
+    if ($lastName.value.length < 1 || $firstName.value.length < 1 || $address.value.length < 1 || $city.value.length < 1 || $email.value.length < 1) { 
         alert('Veuillez remplir tous les champs!')       
         
     } else {           
         localStorage.setItem("form", JSON.stringify(contact)); //envoi le formulaire dans le storage
-    }
-   
+        // créer un array avec les id des produits du localstorage
+    let products = [];
+    for (let l = 0; l < items.length; l++) {
+
+        let idProducts = items[l].idProduct;
+        products.push(idProducts); 
+        localStorage.setItem("products", JSON.stringify(products));
+                 
+    }  
+
     //objet à envoyer
     const command = {
         contact,
-        addStorage
+        products,
     }
 
     // Envoi le localStorage avec POST
@@ -117,14 +119,15 @@ addStorageForm.addEventListener("click",(e) => {
         headers: { 'Content-Type': 'application/json; charset=utf-8' }, 
        })
        .then (Response => Response.json())
-       .then((json) => {
-           localStorage.removeItem("contact")
-           localStorage.removeItem("addStorage")
-       })
+       .then(json => {console.log(json)
+        
+        })
 
        .catch(() => {
         alert(error)
-      })
+    })
+    }  
+   
 });
         
    

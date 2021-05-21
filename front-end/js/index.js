@@ -7,37 +7,27 @@ fetch("http://localhost:3000/api/teddies/")
 
         const products = data; 
               
-        const section = document.getElementById("sectionProduct");        
+        const sectionProducts = document.querySelector("#sectionProduct");        
         
               
         for (let i = 0; i < products.length; i++){
             
             const product = products[i];
-                                  
-            const title = document.getElementById("nameProduct");
-            title.innerHTML = product.name;
-         
+                                
+            const productCard = `
+            <div class="card col-12 col-lg-4 col-md-6 mt-4">
+                <a  href="page/product.html?id=${product._id}" >
+                    <img  src="${product.imageUrl}" class="card-image"  alt="page produit">
+                    <div class="card-body">
+                        <h2>${product.name}</h2>
+                        <p class="card-text">${product.description}</p>
+                        <p class="card-price h4">${product.price /100}.00€</p>
+                    </div>
+                </a>
+            </div> `;
 
-            const img = document.getElementById("imageProduct");
-            img.setAttribute ("src", product.imageUrl);
-
-            const description = document.getElementById("descriptionProduct");
-            description.innerHTML = product.description;
-
-            const price = document.getElementById("priceProduct");
-            price.innerHTML = product.price / 100 + ".00€";
-            
-            const link = document.getElementById("pageProduct");
-            link.setAttribute("href", "page/product.html?id=" + product._id); 
-
-            const productElmt = document.getElementById("cardProductTemplate"); /*choisi l'element à copier*/
-           
-            const product1 = productElmt.cloneNode(true); /*defini l'element a reproduire*/
-            product1.classList.remove("d-none"); /*retire le display none*/
-            product1.removeAttribute("id"); /* retire son id*/
-
-            section.appendChild(product1); //introduit le clone dans la section
-            
+            sectionProducts.innerHTML += productCard;
+            console.log(productCard)
         }
     
     })
