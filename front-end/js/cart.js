@@ -1,26 +1,26 @@
 //Récupère les produits du local storage
-let addStorage = JSON.parse(localStorage.getItem("product"));
-console.log(addStorage)
+let itemsBasket = JSON.parse(localStorage.getItem("product"));
+console.log(itemsBasket)
 
-const items = addStorage;
+
 
 // Sélectionner la balise tableau 
 const section = document.getElementById("sectionTable");
 
 
-if(addStorage === null) {
+if(itemsBasket === null) {
     alert("votre panier est vide.")
 } else{
-    for (let i = 0; i < items.length; i++){
+    for (let i = 0; i < itemsBasket.length; i++){
 
-        const item = items[i];
+        const item = itemsBasket[i];
         console.log(item)
        
         const tableProduct = ` 
         <tr scope ="row">
         <td>${item.titleProduct} - ${item.colorProduct}</td>
-        <td>${item.quantite}</td>
         <td>${item.priceProduct/100}.00€</td>
+        <td>${item.quantite}</td>
         </td>
         <td>
             <button type="reset" id="buttonReset" class="btn btn-outline-secondary">
@@ -35,21 +35,28 @@ if(addStorage === null) {
         section.innerHTML += tableProduct;
 
         //Supprimer un produit
-        /*let deleted = document.getElementById("buttonReset")      
+        let deleted = document.querySelector("#buttonReset")    
+        let index = item.idProduct;
+        
        
         deleted.addEventListener("click",(e) => {
             e.preventDefault;
-            deleted.splice(index,1);               
+            itemsBasket.splice(index,1);  
+            console.log(itemsBasket);
+            localStorage.setItem("product",JSON.stringify(itemsBasket));
+
+            alert("Le produit a été supprimé du panier!")
+            window.location.href = "cart.html"             
                
-            })*/
+        });
         
 
         //Création du total de la commande 
         let arrayPrice = [];
 
-        for (let k = 0; k < items.length; k++) {
+        for (let k = 0; k < itemsBasket.length; k++) {
 
-            let priceP = items[k].totalProduct;
+            let priceP = itemsBasket[k].totalProduct;
             arrayPrice.push(priceP);            
         }  
         const reducer = (accumulator, currentValue) => accumulator + currentValue;// utilisation methode reduce
@@ -58,6 +65,7 @@ if(addStorage === null) {
         const totalCommand = document.getElementById("totalPrice");
         totalCommand.innerHTML = total/100 + "€";
 
+        localStorage.setItem("total", JSON.stringify(total));
     }
     
     
@@ -97,12 +105,12 @@ addStorageForm.addEventListener("click",(e) => {
     } else {           
         localStorage.setItem("form", JSON.stringify(contact)); //envoi le formulaire dans le storage
         // créer un array avec les id des produits du localstorage
-    let products = [];
-    for (let l = 0; l < items.length; l++) {
+        let products = [];
+        for (let l = 0; l < itemsBasket.length; l++) {
 
-        let idProducts = items[l].idProduct;
-        products.push(idProducts); 
-        localStorage.setItem("products", JSON.stringify(products));
+            let idProducts = itemsBasket[l].idProduct;
+            products.push(idProducts); 
+            localStorage.setItem("products", JSON.stringify(products));
                  
     }  
 
@@ -120,7 +128,15 @@ addStorageForm.addEventListener("click",(e) => {
        })
        .then (Response => Response.json())
        .then(json => {console.log(json)
-        
+
+        // Stock la réponse dans le storage
+        localStorage.setItem("order_Id",json.orderId);
+
+        alert("Votre commande est en cours de traitement!")
+
+        // page de confirmation
+        window.location = "confirm.html";
+             
         })
 
        .catch(() => {
@@ -129,5 +145,3 @@ addStorageForm.addEventListener("click",(e) => {
     }  
    
 });
-        
-   

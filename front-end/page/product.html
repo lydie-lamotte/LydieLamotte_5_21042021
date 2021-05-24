@@ -1,96 +1,96 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Orinoco- site spécialisé dans la vente de nounours, doudou et d'ours en peluche faits à la main!">
-    <title>Orinoco-Produit</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Orinoco- site spécialisé dans la vente de nounours, doudou et d'ours en peluche faits à la main!">
+        <title>Orinoco-Produit</title>
 
-    <!--Bootstrap CSS only -->
-    <link rel="stylesheet" href="../style/bootstrap.min.css">
-    <link rel="stylesheet" href="../style/style.css">
+        <!--Bootstrap CSS only -->
+        <link rel="stylesheet" href="../style/bootstrap.min.css">
+        <link rel="stylesheet" href="../style/style.css">
 
-    <!-- javascript -->
-    <script src="../js/product.js" defer></script>
-</head>
-<body>
-    <div class= "container-fluid">
-        <!--Header-->
-        <header>
-            <nav class= "col navbar navbar-expand-lg">
-                <a class= "navbar-brand" href="../index.html"> 
-                    <img src="../image/logo_orinoco.png" alt="page d'accueil">
-                </a>
-                <ul class= "navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark btn" href="../page/cart.html">Mon Panier</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        <!--Header-->
-
-        <!--jumbotron-->
-        <div class= "jumbotron mt-4 mb-5 text-center">
-            <h1>Livraison gratuite pour cette article!</h1>
-        </div>
-        <!--jumbotron-->
-
-        <!--Product-->
-        <section class=" teddyCard d-flex flex-column flex-md-column flex-lg-row ">
-            <div class="product-image">
-                <img id="productImage" class="img-fluid" alt="">
-            </div>
-
-            <div class="product-description">
-                <h1 id="productName" class="text-center"></h1>
-                <p id="productDescription" class="p-4"></p>
-                <p id="productPrice" class="h4 px-4"></p>
-                <p class="h5 text-success p-4">En stock: 10 produits disponibles</p>
-                <form>
-                    <label for="colorChoise" class="h5 px-4">Choisissez une couleur : </label>
-                    <select  name ="colorChoise" id="colorChoise" class="m-4 px-4">
-                    </select>
-                
-                    <label for="quantityChoise" class="h5 px-4">Quantité : </label>
-                    <select  name ="quantityChoise" id="quantityChoise" class="m-4 px-4">
-                    </select>
-                </form>         
-            </div>
-
-            <button id="addCart" type="submit" class="btn btn-primary w-25 h-25 ">Ajouter à mon panier</button>
-        </section>
-        <!-- Products -->
-
-        <!-- Footer -->
-        <footer class="container-fluid">
-            <div class="row">
-                <div class="col-12 col-lg-4 mx-auto">
-                    <h4>Aide</h4>
-                    <ul>
-                        <li>Contacter le Service Client</li>
-                        <li>FAQ</li>
+        <!-- javascript -->
+        <script src="../js/product.js" defer></script>
+    </head>
+    <body>
+        <div class= "container-fluid">
+            <!--Header-->
+            <header>
+                <nav class= "col navbar navbar-expand-lg">
+                    <a class= "navbar-brand" href="../index.html"> 
+                        <img src="../image/logo_orinoco.png" alt="page d'accueil">
+                    </a>
+                    <ul class= "navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark btn" href="../page/cart.html">Mon Panier</a>
+                        </li>
                     </ul>
+                </nav>
+            </header>
+            <!--Header-->
+
+            <!--jumbotron-->
+            <div class= "jumbotron mt-4 mb-5 text-center">
+                <h1>Livraison gratuite pour cette article!</h1>
+            </div>
+            <!--jumbotron-->
+
+            <!--Product-->
+            <section class=" teddyCard d-flex flex-column flex-md-column flex-lg-row ">
+                <div class="product-image">
+                    <img id="productImage" src="" class="img-fluid" alt="">
                 </div>
 
-                <div class="col-12 col-lg-4 mx-auto">
-                    <h4>Nos Services</h4>
-                    <ul>
-                        <li>Satisfait ou remboursé</li>
-                        <li>livraison en 48H</li>
-                    </ul>
+                <div class="product-description">
+                    <h1 id="productName" class="text-center"></h1>
+                    <p id="productDescription" class="p-4"></p>
+                    <p id="productPrice" class="h4 px-4"></p>
+                    <p class="h5 text-success p-4">En stock: 10 produits disponibles</p>
+                    <form>
+                        <label for="colorChoise" class="h5 px-4">Choisissez une couleur : </label>
+                        <select  name ="colorChoise" id="colorChoise" class="m-4 px-4">
+                        </select>
+                    
+                        <label for="quantityChoise" class="h5 px-4">Quantité : </label>
+                        <select  name ="quantityChoise" id="quantityChoise" class="m-4 px-4">
+                        </select>
+                    </form>         
                 </div>
 
-                <div class="col-12 col-lg-4 mx-auto">
-                    <h4>Nos garanties</h4>
-                    <ul>
-                        <li>Mentions légales</li>
-                        <li>Conditions générales de vente</li>
-                    </ul>
+                <button id="addCart" type="submit" class="btn btn-primary w-25 h-25 ">Ajouter à mon panier</button>
+            </section>
+            <!-- Products -->
+
+            <!-- Footer -->
+            <footer class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-lg-4 mx-auto">
+                        <h4>Aide</h4>
+                        <ul>
+                            <li>Contacter le Service Client</li>
+                            <li>FAQ</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-12 col-lg-4 mx-auto">
+                        <h4>Nos Services</h4>
+                        <ul>
+                            <li>Satisfait ou remboursé</li>
+                            <li>livraison en 48H</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-12 col-lg-4 mx-auto">
+                        <h4>Nos garanties</h4>
+                        <ul>
+                            <li>Mentions légales</li>
+                            <li>Conditions générales de vente</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </footer>
-        <!-- Footer-->
-</body>
+            </footer>
+        </div>    <!-- Footer-->
+    </body>
 </html>

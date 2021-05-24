@@ -1,128 +1,129 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Orinoco- site spécialisé dans la vente de nounours, doudou et d'ours en peluche faits à la main!">
-    <title>Orinoco-Panier</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Orinoco- site spécialisé dans la vente de nounours, doudou et d'ours en peluche faits à la main!">
+        <title>Orinoco-Panier</title>
 
-    <!--Bootstrap CSS only -->
-    <link rel="stylesheet" href="../style/bootstrap.min.css">
-    <link rel="stylesheet" href="../style/style.css">
+        <!--Bootstrap CSS only -->
+        <link rel="stylesheet" href="../style/bootstrap.min.css">
+        <link rel="stylesheet" href="../style/style.css">
 
-    <script src="../js/cart.js" defer></script>
-</head>
-<body>
-    <div class= "container-fluid">
-        <!--Header-->
-        <header>
-            <nav class= "col navbar navbar-expand-lg">
-                <a class= "navbar-brand" href="../index.html"> 
-                    <img src="../image/logo_orinoco.png" alt="page d'accueil">
-                </a>
-                <ul class= "navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark btn" href="../index.html">Accueil</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        <!--Header-->
-
-        <!-- Section mon panier-->
-        <section>
-            <h1 class="my-5"> Mon panier</h1>
-            <div id="sectionCart" class="table-responsive">
-                <table  id="sectionTable" class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Produit</th>
-                        <th scope="col">Prix</th>
-                        <th scope="col">Quantité</th>
-                        <th scope="col">Supprimer</th> 
-                        <th scope="col">Total</th>
-                    </tr>
-                    </thead>
-                    <tbody id="tableProduct">
-                        
-                    </tbody> 
-                </table>
-            </div> 
-            <div class="d-flex justify-content-around " >                 
-                <h3 class="h4 col-sm-6">Total de la commande :</h3>
-                <p id="totalPrice" class="h5 col-sm-6"></p>                       
-            </div>
-        </section>
-        <!-- Section mon panier-->
-
-        <!-- Section coordonnées-->
-        <section>
-            <h2 class="mt-5 h1"> Adresse de livraison</h2>
-            <form class="d-flex flex-wrap flex-column flex-md-row flex-lg-row mt-5" id="formBuyer">
-                <div class="form-group m-2 col-sm-12 col-md-6">
-                    <label for="lastName">Nom</label>
-                    <input id="lastName" type="text" name="lastName" class="form-control" required>
-                </div>
-                <div class="form-group m-2 col-sm-12 col-md-6">
-                    <label for="firstName">Prénom</label>
-                    <input id="firstName" type="text" name="firstName" class="form-control" required>
-                </div>
-                <div class="form-group m-2 col-sm-12 col-md-6">
-                    <label for="address">Adresse</label>
-                    <input id="address" type="text" name="address" class="form-control" required>
-                </div>
-                <div class="form-group m-2 col-sm-12 col-md-6">
-                    <label for="zipCode">Code Postal</label>
-                    <input id="zipCode" type="tel" name="zipCode" pattern="[0-9]{5}" class="form-control" required>
-                </div>
-                <div class="form-group m-2 col-sm-12 col-md-6">
-                    <label for="city">Ville</label>
-                    <input id="city" type="text" name="city" class="form-control" required>
-                </div>
-                <div class="form-group m-2 col-sm-12 col-md-6">
-                    <label for="mail">E-mail</label>
-                    <input id="mail" type="email" name="mail" class="form-control" required>
-                    <small></small>
-                </div>
-                <div class="btn d-flex justify-content-center">
-                    <button id="submit" class="btn btn-primary d-flex justify-content-center justify-content-lg-end" type="submit">Commander</button>
-                </div>                
-            </form>
-        </section>
-        <!-- Section coordonnées-->
-
-
-
-
-        <!-- Footer-->
-        <footer class="container-fluid p-4">
-            <div class="row">
-                <div class="col-12 col-md-12 col-lg-4">
-                    <h4>Aide</h4>
-                    <ul>
-                        <li>Contacter le Service Client</li>
-                        <li>FAQ</li>
+        <script src="../js/cart.js" defer></script>
+    </head>
+    <body>
+        <div class= "container-fluid">
+            <!--Header-->
+            <header>
+                <nav class= "col navbar navbar-expand-lg">
+                    <a class= "navbar-brand" href="../index.html"> 
+                        <img src="../image/logo_orinoco.png" alt="page d'accueil">
+                    </a>
+                    <ul class= "navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark btn" href="../index.html">Accueil</a>
+                        </li>
                     </ul>
-                </div>
+                </nav>
+            </header>
+            <!--Header-->
 
-                <div class="col-12 col-md-12 col-lg-4">
-                    <h4>Nos Services</h4>
-                    <ul>
-                        <li>Satisfait ou remboursé</li>
-                        <li>livraison en 48H</li>
-                    </ul>
+            <!-- Section mon panier-->
+            <section>
+                <h1 class="my-5"> Mon panier</h1>
+                <div id="sectionCart" class="table-responsive">
+                    <table  id="sectionTable" class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Produit</th>
+                            <th scope="col">Prix</th>
+                            <th scope="col">Quantité</th>
+                            <th scope="col">Supprimer</th> 
+                            <th scope="col">Total</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tableProduct">
+                            
+                        </tbody> 
+                    </table>
+                </div> 
+                <div class="d-flex justify-content-around " >                 
+                    <h3 class="h4 col-sm-6">Total de la commande :</h3>
+                    <p id="totalPrice" class="h5 col-sm-6"></p>                       
                 </div>
+            </section>
+            <!-- Section mon panier-->
 
-                <div class="col-12 col-md-12 col-lg-4">
-                    <h4>Nos garanties</h4>
-                    <ul>
-                        <li>Mentions légales</li>
-                        <li>Conditions générales de vente</li>
-                    </ul>
+            <!-- Section coordonnées-->
+            <section>
+                <h2 class="mt-5 h1"> Adresse de livraison</h2>
+                <form class="d-flex flex-wrap flex-column flex-md-row flex-lg-row mt-5" id="formBuyer">
+                    <div class="form-group m-2 col-sm-12 col-md-6">
+                        <label for="lastName">Nom</label>
+                        <input id="lastName" type="text" name="lastName" class="form-control" required>
+                    </div>
+                    <div class="form-group m-2 col-sm-12 col-md-6">
+                        <label for="firstName">Prénom</label>
+                        <input id="firstName" type="text" name="firstName" class="form-control" required>
+                    </div>
+                    <div class="form-group m-2 col-sm-12 col-md-6">
+                        <label for="address">Adresse</label>
+                        <input id="address" type="text" name="address" class="form-control" required>
+                    </div>
+                    <div class="form-group m-2 col-sm-12 col-md-6">
+                        <label for="zipCode">Code Postal</label>
+                        <input id="zipCode" type="tel" name="zipCode" pattern="[0-9]{5}" class="form-control" required>
+                    </div>
+                    <div class="form-group m-2 col-sm-12 col-md-6">
+                        <label for="city">Ville</label>
+                        <input id="city" type="text" name="city" class="form-control" required>
+                    </div>
+                    <div class="form-group m-2 col-sm-12 col-md-6">
+                        <label for="mail">E-mail</label>
+                        <input id="mail" type="email" name="mail" class="form-control" required>
+                        <small></small>
+                    </div>
+                    <div class="btn d-flex justify-content-center">
+                        <button id="submit" class="btn btn-primary d-flex justify-content-center justify-content-lg-end" type="submit">Commander</button>
+                    </div>                
+                </form>
+            </section>
+            <!-- Section coordonnées-->
+
+
+
+
+            <!-- Footer-->
+            <footer class="container-fluid p-4">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-4">
+                        <h4>Aide</h4>
+                        <ul>
+                            <li>Contacter le Service Client</li>
+                            <li>FAQ</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-12 col-md-12 col-lg-4">
+                        <h4>Nos Services</h4>
+                        <ul>
+                            <li>Satisfait ou remboursé</li>
+                            <li>livraison en 48H</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-12 col-md-12 col-lg-4">
+                        <h4>Nos garanties</h4>
+                        <ul>
+                            <li>Mentions légales</li>
+                            <li>Conditions générales de vente</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </footer>
-        <!-- Footer -->
-</body>
+            </footer>
+            <!-- Footer -->
+        </div>    
+    </body>
 </html>
