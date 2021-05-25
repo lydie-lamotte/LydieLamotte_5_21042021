@@ -6,13 +6,6 @@ const queryString_url_id = window.location.search;
 const id = queryString_url_id.slice(4);
 console.log(id)
 
-
-// Sélectionner la balise select option
-const colorSelect = document.getElementById("colorChoise");
-
-//Sélectionne la balise select quantité
-const QuantitySelect = document.getElementById("quantityChoise")
-
 // Récupère le produit dans l'Api avec son id
 fetch("http://localhost:3000/api/teddies/" + id)
     .then (response => response.json())
@@ -22,44 +15,56 @@ fetch("http://localhost:3000/api/teddies/" + id)
         const elements = data;
         const colors = elements.colors;
         
+        const teddieCard = `
+            <div class="product-image">
+                <img src="${elements.imageUrl}" class="img-fluid border" alt="">
+            </div>
 
-        // Création de la carte produit
-        const image = document.getElementById("productImage");
-        image.setAttribute ("src", elements.imageUrl);
+            <div class="product-description">
+                <h1 class="text-center">${elements.name}</h1>
+                <p id="productDescription" class="p-4">${elements.description}</p>
+                <p class="h4 px-4">${elements.price / 100}.00€</p>
+                <p class="h5 text-success p-4">En stock: 10 produits disponibles</p>
+                <form>
+                    <label for="colorChoise" class="h5 px-4 row">Choisissez une couleur : </label>
+                    <select  name ="colorChoise" id="colorChoise" class="my-2 mx-4 px-4">
+                    </select>
+            
+                    <label for="quantityChoise" class="h5 px-4 row">Quantité : </label>
+                    <select  name ="quantityChoise" id="quantityChoise" class="my-2 mx-4 px-4">
+                    </select>
+                </form>         
+            </div>
 
-        const title = document.getElementById("productName");
-        title.innerHTML = elements.name;
-
-        const description = document.getElementById("productDescription");
-        description.innerHTML = elements.description;
-
-        const price = document.getElementById("productPrice");
-        price.innerHTML = elements.price / 100 + "€";
-
-        
+            <button id="addCart" type="submit" class="btn btn-primary w-25 h-25">Ajouter à mon panier</button>
+        `
+        // Sélectionne la balise du produit et on injecte le produit dans la page
+        const elementCard = document.querySelector(".teddyCard")
+        elementCard.innerHTML += teddieCard;
+               
         //option color
         for (let i = 0 ; i < colors.length; i++) {            
-            const color = colors[i];
-
-            // creation d'une balise option couleur
-            const colorOption = document.createElement("option");
-            colorOption.setAttribute("value",color);
-            colorOption.innerHTML = color;
-
-            //ajout de l'option dans le select des couleurs
-            colorSelect.appendChild(colorOption);
+            
+            colorOption =
+            `
+            <option value=${colors[i]}>${colors[i]}</option>
+            `;            
+            // Sélectionne la balise select option et on injecte la couleur dans la page
+            const colorSelect = document.querySelector("#colorChoise");
+            colorSelect.innerHTML += colorOption;
+            
         }
         //option quantité
         for (let j = 0; j < 10; j++) {
-            let choice  = j +1 ;
             
+            quantityOption = 
+            `
+            <option value=${j+1}>${j+1}</option>
+            `;
+            // Sélectionne la balise select quantité et on injecte la quantité dans la page
+            const quantitySelect = document.querySelector("#quantityChoise");
+            quantitySelect.innerHTML += quantityOption;
 
-            const quantityOption = document.createElement("option");
-            quantityOption.setAttribute("value",choice);
-            quantityOption.innerHTML = choice;
-            
-            QuantitySelect.appendChild(quantityOption);
-           
         }
             /////////////////////////PANIER/////////////////////////////////////
 
@@ -94,22 +99,22 @@ fetch("http://localhost:3000/api/teddies/" + id)
            
             // Envoi des infos dans le storage en format json
             let addStorage = JSON.parse(localStorage.getItem("product"));
-            
+            ;
             if(addStorage === null) {
                 addStorage = []; //création d'un tableau
                 addStorage.push(addProduct); // Envoi du détail des produits dans le tableau
                 localStorage.setItem("product", JSON.stringify(addStorage)); // converti le format en JSON
+                alert("Produit ajouté au panier");
+            //} else if(elements._id != null){
+                  //alert("Produit déjà présent dans le panier")
             } else{
                 addStorage.push(addProduct);
                 localStorage.setItem("product", JSON.stringify(addStorage)); 
+                alert("Produit ajouté au panier");
             }
-    
+            
             })
 
-            // Message de validation du produit dans le panier
-            document.getElementById("addCart").addEventListener("click",function(){
-                alert("Produit ajouté au panier");
-            });
 
             
     })

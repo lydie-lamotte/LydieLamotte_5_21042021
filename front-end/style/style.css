@@ -56,12 +56,9 @@ footer {
     transform: scale(1.1);
 }
 .teddyCard {
-    border: #f3e9f1 solid 20px;
-    background-color: #f3e9f1;
     margin: auto;
     margin-bottom: 30px;
 }
-
 /* Panier*/
 
 #buttonReset {
