@@ -13,18 +13,17 @@ fetch("http://localhost:3000/api/teddies/" + id)
         console.log(data)
 
         const elements = data;
-        const colors = elements.colors;
         
         const teddieCard = `
-            <div class="product-image">
+            <div class="product-image col-12 col-md-6 col-lg-6">
                 <img src="${elements.imageUrl}" class="img-fluid border" alt="">
             </div>
 
-            <div class="product-description">
+            <div class="product-description col-12 col-md-6 col-lg-6">
                 <h1 class="text-center">${elements.name}</h1>
-                <p id="productDescription" class="p-4">${elements.description}</p>
-                <p class="h4 px-4">${elements.price / 100}.00€</p>
-                <p class="h5 text-success p-4">En stock: 10 produits disponibles</p>
+                <p id="productDescription" class="p-2">${elements.description}</p>
+                <p class="h4 px-2">${elements.price / 100}.00€</p>
+                <p class="h5 text-success p-2">En stock: 10 produits disponibles</p>
                 <form>
                     <label for="colorChoise" class="h5 px-4 row">Choisissez une couleur : </label>
                     <select  name ="colorChoise" id="colorChoise" class="my-2 mx-4 px-4">
@@ -36,18 +35,18 @@ fetch("http://localhost:3000/api/teddies/" + id)
                 </form>         
             </div>
 
-            <button id="addCart" type="submit" class="btn btn-primary w-25 h-25">Ajouter à mon panier</button>
+            <button id="addCart" type="submit" class="btn btn-primary mx-auto my-3 w-50">Ajouter à mon panier</button>
         `
         // Sélectionne la balise du produit et on injecte le produit dans la page
         const elementCard = document.querySelector(".teddyCard")
         elementCard.innerHTML += teddieCard;
                
         //option color
-        for (let i = 0 ; i < colors.length; i++) {            
+        for (let i = 0 ; i < elements.colors.length; i++) {            
             
             colorOption =
             `
-            <option value=${colors[i]}>${colors[i]}</option>
+            <option value=${elements.colors[i]}>${elements.colors[i]}</option>
             `;            
             // Sélectionne la balise select option et on injecte la couleur dans la page
             const colorSelect = document.querySelector("#colorChoise");

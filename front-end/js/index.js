@@ -1,19 +1,16 @@
-// Api teddies
-
+// Méthode fetch pour la récupération des données de l'API
 fetch("http://localhost:3000/api/teddies/")
     .then(Response => Response.json())
     .then(data => {
         console.log(data);
 
-        const products = data; 
-              
-        const sectionProducts = document.querySelector("#sectionProduct");        
-        
+        const products = data;              
+            
               
         for (let i = 0; i < products.length; i++){
             
             const product = products[i];
-                                
+            //Structure HTML                     
             const productCard = `
             <div class="card col-12 col-lg-4 col-md-6 mt-4">
                 <a  href="page/product.html?id=${product._id}" >
@@ -25,7 +22,8 @@ fetch("http://localhost:3000/api/teddies/")
                     </div>
                 </a>
             </div> `;
-
+            // Insertion da la structure dans la section selectionné
+            const sectionProducts = document.querySelector("#sectionProduct");
             sectionProducts.innerHTML += productCard;
             console.log(productCard)
         }

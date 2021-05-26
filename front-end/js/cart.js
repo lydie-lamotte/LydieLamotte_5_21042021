@@ -34,13 +34,11 @@ if(itemsBasket === null) {
         </tr>`
         section.innerHTML += tableProduct;
 
-        //Supprimer un produit
-        let deleted = document.querySelector(".buttonReset")    
-        console.log(deleted);      
+        //Supprimer un produit      
        
-        deleted.addEventListener("click",(e) => {
+        document.querySelector(".buttonReset").addEventListener("click",(e) => {
             e.preventDefault;
-            itemsBasket.splice(itemsBasket[i],1);  
+            itemsBasket.splice(item.idProduct,1);  
             console.log(itemsBasket);
             localStorage.setItem("product",JSON.stringify(itemsBasket));
 
