@@ -4,7 +4,8 @@
 
 const queryString_url_id = window.location.search;
 const id = queryString_url_id.slice(4);
-console.log(id)
+    
+
 
 // Récupère le produit dans l'Api avec son id
 fetch("http://localhost:3000/api/teddies/" + id)
@@ -104,8 +105,7 @@ fetch("http://localhost:3000/api/teddies/" + id)
                 addStorage.push(addProduct); // Envoi du détail des produits dans le tableau
                 localStorage.setItem("product", JSON.stringify(addStorage)); // converti le format en JSON
                 alert("Produit ajouté au panier");
-            //} else if(elements._id != null){
-                  //alert("Produit déjà présent dans le panier")
+            
             } else{
                 addStorage.push(addProduct);
                 localStorage.setItem("product", JSON.stringify(addStorage)); 

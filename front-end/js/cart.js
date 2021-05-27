@@ -4,10 +4,6 @@ console.log(itemsBasket)
 
 
 
-// Sélectionner la balise tableau 
-const section = document.getElementById("sectionTable");
-
-
 if(itemsBasket === null) {
     alert("votre panier est vide.")
 } else{
@@ -32,19 +28,26 @@ if(itemsBasket === null) {
         </td> 
         <td>${item.totalProduct/100}.00€</td>
         </tr>`
+
+        // Insertion da la structure dans la section selectionné
+        const section = document.getElementById("sectionTable");
         section.innerHTML += tableProduct;
 
-        //Supprimer un produit      
-       
-        document.querySelector(".buttonReset").addEventListener("click",(e) => {
-            e.preventDefault;
-            itemsBasket.splice(item.idProduct,1);  
-            console.log(itemsBasket);
+        //Supprimer un produit   
+        
+        function deleteItemSelect(index) {
+            itemsBasket.splice(index,1);
             localStorage.setItem("product",JSON.stringify(itemsBasket));
-
             alert("Le produit a été supprimé du panier!")
-            window.location.href = "cart.html"             
-               
+            window.location.href = "cart.html"
+        }   
+        const deleteItem = document.querySelectorAll(".buttonReset");
+        deleteItem.forEach((btn , i) => {
+            btn.addEventListener("click",(e) => {
+                e.preventDefault;
+                deleteItemSelect( i);
+            });       
+          
         });
         
 
@@ -96,10 +99,25 @@ addStorageForm.addEventListener("click",(e) => {
 
        
     // Validation des informations du formulaire et envoi dans le localstorage
-    if ($lastName.value.length < 1 || $firstName.value.length < 1 || $address.value.length < 1 || $city.value.length < 1 || $email.value.length < 1) { 
-        alert('Veuillez remplir tous les champs!')       
+    
+	function validateEmail(value){
+        if (/^[a-zA-Z0-9-_.]+[@]{1}[a-zA-Z0-9-_.]+[.]{1}[a-z]{2,10}$/.test(value)){ 
+            return true;           
+        } else {
+            return false;
+        }
+    }	
         
-    } else {           
+    
+    if ($lastName.value.length < 1 || $firstName.value.length < 1 || $address.value.length < 1 || $city.value.length < 1 || $zipCode.value.length < 1 || $email.value.length < 1 ) { 
+        alert('Veuillez remplir tous les champs!')       
+        return
+
+    } if (validateEmail($email.value) === false) {
+        alert ("Adresse mail non valide")
+        return
+    } 
+    else {         
         localStorage.setItem("form", JSON.stringify(contact)); //envoi le formulaire dans le storage
         // créer un array avec les id des produits du localstorage
         let products = [];
