@@ -3,12 +3,9 @@ fetch("http://localhost:3000/api/teddies/")
     .then(Response => Response.json())
     .then(data => {
         console.log(data);
-
-        const products = data;              
-            
-              
-        for (let i = 0; i < products.length; i++){
-            
+        const products = data;        
+      
+        for (let i = 0; i < products.length; i++){            
             const product = products[i];
             //Structure HTML                     
             const productCard = `
@@ -26,8 +23,7 @@ fetch("http://localhost:3000/api/teddies/")
             const sectionProducts = document.querySelector("#sectionProduct");
             sectionProducts.innerHTML += productCard;
             console.log(productCard)
-        }
-    
+        }    
     })
     .catch((error) => {
         console.log(error);

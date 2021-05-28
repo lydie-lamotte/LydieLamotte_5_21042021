@@ -1,20 +1,14 @@
 //////////////////////// PRODUIT////////////////////////////////////
-
 // Récupère l'id
-
 const queryString_url_id = window.location.search;
-const id = queryString_url_id.slice(4);
-    
-
+const id = queryString_url_id.slice(4); 
 
 // Récupère le produit dans l'Api avec son id
 fetch("http://localhost:3000/api/teddies/" + id)
     .then (response => response.json())
     .then (data => { 
         console.log(data)
-
-        const elements = data;
-        
+        const elements = data;        
         const teddieCard = `
             <div class="product-image col-12 col-md-6 col-lg-6">
                 <img src="${elements.imageUrl}" class="img-fluid border" alt="">
@@ -51,12 +45,11 @@ fetch("http://localhost:3000/api/teddies/" + id)
             `;            
             // Sélectionne la balise select option et on injecte la couleur dans la page
             const colorSelect = document.querySelector("#colorChoise");
-            colorSelect.innerHTML += colorOption;
-            
+            colorSelect.innerHTML += colorOption;            
         }
+
         //option quantité
-        for (let j = 0; j < 10; j++) {
-            
+        for (let j = 0; j < 10; j++) {            
             quantityOption = 
             `
             <option value=${j+1}>${j+1}</option>
@@ -64,16 +57,16 @@ fetch("http://localhost:3000/api/teddies/" + id)
             // Sélectionne la balise select quantité et on injecte la quantité dans la page
             const quantitySelect = document.querySelector("#quantityChoise");
             quantitySelect.innerHTML += quantityOption;
-
         }
-            /////////////////////////PANIER/////////////////////////////////////
 
-            // Sélectionner le bouton pour ajouter les produits au panier
-            const addCart = document.getElementById("addCart");
+/////////////////////////////////PANIER/////////////////////////////////////
 
-            // Utilisation du bouton addCart pour envoyer vers le panier
-            addCart.addEventListener("click",(e) => {
-                e.preventDefault()
+        // Sélectionner le bouton pour ajouter les produits au panier
+        const addCart = document.getElementById("addCart");
+
+        // Utilisation du bouton addCart pour envoyer vers le panier
+        addCart.addEventListener("click",(e) => {
+            e.preventDefault()
 
             //sélectionne et ajoute l'id de l'option
             const idOption = document.getElementById("colorChoise");
@@ -81,9 +74,8 @@ fetch("http://localhost:3000/api/teddies/" + id)
 
             //sélectionne et ajoute la quantité        
             const choiceQuantity = document.getElementById("quantityChoise");
-            const choiceQuantitySelected = choiceQuantity.value;
-             
-             
+            const choiceQuantitySelected = choiceQuantity.value;             
+            
             //sélectionne et ajoute les détails du produit dans un objet
             let addProduct = {
                 idProduct : id,
@@ -93,31 +85,25 @@ fetch("http://localhost:3000/api/teddies/" + id)
                 priceProduct : elements.price,
                 totalProduct : (elements.price * choiceQuantitySelected),
             }
-
                        
-            ////////////////////// LOCAL STORAGE//////////////////////////////////////
+/////////////////////////////////// LOCAL STORAGE//////////////////////////////////////
            
             // Envoi des infos dans le storage en format json
             let addStorage = JSON.parse(localStorage.getItem("product"));
-            ;
-            if(addStorage === null) {
-                addStorage = []; //création d'un tableau
-                addStorage.push(addProduct); // Envoi du détail des produits dans le tableau
-                localStorage.setItem("product", JSON.stringify(addStorage)); // converti le format en JSON
-                alert("Produit ajouté au panier");
-            
-            } else{
+            ///fonction pourl'ajout au panier
+            function addlocal(){
                 addStorage.push(addProduct);
-                localStorage.setItem("product", JSON.stringify(addStorage)); 
-                alert("Produit ajouté au panier");
+                localStorage.setItem("product", JSON.stringify(addStorage));
+                alert("Produit ajouté au panier");            
             }
-            
-            })
-
-
-            
+            if (addStorage === null) {
+                addStorage = [];
+                addlocal();           
+            } else {
+                addlocal();
+            }        
+        })            
     })
-
     .catch((error) => {
         console.log(error);
     }) 

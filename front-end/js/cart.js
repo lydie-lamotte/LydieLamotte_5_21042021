@@ -2,16 +2,12 @@
 let itemsBasket = JSON.parse(localStorage.getItem("product"));
 console.log(itemsBasket)
 
-
-
-if(itemsBasket === null) {
+if (itemsBasket === null) {
     alert("votre panier est vide.")
-} else{
-    for (let i = 0; i < itemsBasket.length; i++){
-
+} else {
+    for (let i = 0; i < itemsBasket.length; i++) {
         const item = itemsBasket[i];
-        console.log(item)
-       
+               
         const tableProduct = ` 
         <tr scope ="row">
         <td>${item.titleProduct} - ${item.colorProduct}</td>
@@ -28,37 +24,36 @@ if(itemsBasket === null) {
         </td> 
         <td>${item.totalProduct/100}.00€</td>
         </tr>`
-
         // Insertion da la structure dans la section selectionné
         const section = document.getElementById("sectionTable");
         section.innerHTML += tableProduct;
 
-        //Supprimer un produit   
-        
+        //Supprimer un produit           
         function deleteItemSelect(index) {
             itemsBasket.splice(index,1);
             localStorage.setItem("product",JSON.stringify(itemsBasket));
-            alert("Le produit a été supprimé du panier!")
             window.location.href = "cart.html"
         }   
+
         const deleteItem = document.querySelectorAll(".buttonReset");
         deleteItem.forEach((btn , i) => {
-            btn.addEventListener("click",(e) => {
+            btn.addEventListener("click", (e) => {
                 e.preventDefault;
-                deleteItemSelect( i);
-            });       
-          
-        });
-        
+                const response = confirm("Voulez-vous supprimer l'article?"); 
+                if (response) {
+                    deleteItemSelect(i);
+                }               
+            });    
+        });        
 
         //Création du total de la commande 
         let arrayPrice = [];
 
         for (let k = 0; k < itemsBasket.length; k++) {
-
             let priceP = itemsBasket[k].totalProduct;
             arrayPrice.push(priceP);            
         }  
+
         const reducer = (accumulator, currentValue) => accumulator + currentValue;// utilisation methode reduce
         const total = arrayPrice.reduce(reducer,0);
 
@@ -66,14 +61,11 @@ if(itemsBasket === null) {
         totalCommand.innerHTML = total/100 + "€";
 
         localStorage.setItem("total", JSON.stringify(total));
-    }
-    
-    
+    }   
 }
 ////////////////////////////////////Formulaire///////////////////////////////////////////
 
 const addStorageForm = document.getElementById("submit");
-
 
 // Sélectionne le bouton d'envoi du formulaire
 addStorageForm.addEventListener("click",(e) => {
@@ -84,9 +76,7 @@ addStorageForm.addEventListener("click",(e) => {
     const $address = document.getElementById("address");
     const $zipCode = document.getElementById("zipCode");
     const $city = document.getElementById("city");
-    const $email = document.getElementById("mail");
-
-    
+    const $email = document.getElementById("mail");    
     
     //sélectionne et ajoute les détails du formulaire dans un objet
     let contact = {  
@@ -96,67 +86,52 @@ addStorageForm.addEventListener("click",(e) => {
         city: $city.value,
         email: $email.value,        
     }
-
        
     // Validation des informations du formulaire et envoi dans le localstorage
     
 	function validateEmail(value){
-        if (/^[a-zA-Z0-9-_.]+[@]{1}[a-zA-Z0-9-_.]+[.]{1}[a-z]{2,10}$/.test(value)){ 
-            return true;           
-        } else {
-            return false;
-        }
-    }	
-        
+       return /^[a-zA-Z0-9-_.]+[@]{1}[a-zA-Z0-9-_.]+[.]{1}[a-z]{2,10}$/.test(value);
+    }	      
     
     if ($lastName.value.length < 1 || $firstName.value.length < 1 || $address.value.length < 1 || $city.value.length < 1 || $zipCode.value.length < 1 || $email.value.length < 1 ) { 
-        alert('Veuillez remplir tous les champs!')       
-        return
-
-    } if (validateEmail($email.value) === false) {
+        alert('Veuillez remplir tous les champs!')  
+    } else if (!validateEmail($email.value)) {
         alert ("Adresse mail non valide")
-        return
-    } 
-    else {         
-        localStorage.setItem("form", JSON.stringify(contact)); //envoi le formulaire dans le storage
-        // créer un array avec les id des produits du localstorage
+    } else {         
+        localStorage.setItem("form", JSON.stringify(contact)); 
+        //envoi le formulaire dans le storage
         let products = [];
         for (let l = 0; l < itemsBasket.length; l++) {
 
             let idProducts = itemsBasket[l].idProduct;
             products.push(idProducts); 
-            localStorage.setItem("products", JSON.stringify(products));
-                 
-    }  
+            localStorage.setItem("products", JSON.stringify(products));                 
+        }  
 
-    //objet à envoyer
-    const command = {
-        contact,
-        products,
-    }
+        //objet à envoyer
+        const command = {
+            contact,
+            products,
+        }
 
-    // Envoi le localStorage avec POST
-    fetch("http://localhost:3000/api/teddies/order", {
-        method: "POST",
-        body: JSON.stringify(command),
-        headers: { 'Content-Type': 'application/json; charset=utf-8' }, 
-       })
-       .then (Response => Response.json())
-       .then(json => {console.log(json)
-
-        // Stock la réponse dans le storage
-        localStorage.setItem("order_Id",json.orderId);
-
-        alert("Votre commande est en cours de traitement!")
-
-        // page de confirmation
-        window.location = "confirm.html";
-             
+        // Envoi le localStorage avec POST
+        fetch("http://localhost:3000/api/teddies/order", {
+            method: "POST",
+            body: JSON.stringify(command),
+            headers: { 'Content-Type': 'application/json; charset=utf-8' }, 
         })
+        .then (Response => Response.json())
+        .then(json => {console.log(json)
 
-       .catch(() => {
-        alert(error)
-    })
-    }  
-   
+            // Stock la réponse dans le storage
+            localStorage.setItem("order_Id",json.orderId);
+
+            // page de confirmation
+            window.location = "confirm.html";
+                
+        })
+        .catch(() => {
+            alert(error)
+        })
+    }     
 });
