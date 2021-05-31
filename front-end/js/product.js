@@ -59,7 +59,7 @@ fetch("http://localhost:3000/api/teddies/" + id)
             quantitySelect.innerHTML += quantityOption;
         }
 
-/////////////////////////////////PANIER/////////////////////////////////////
+/////////////////////////////////PANIER/////////////////////////////////////////////////
 
         // Sélectionner le bouton pour ajouter les produits au panier
         const addCart = document.getElementById("addCart");

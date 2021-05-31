@@ -13,6 +13,7 @@ const confirmPage = `
 <a href="../index.html" class="btn btn-primary my-2">Retour à l'accueil</a>
 `;
 validation.innerHTML = confirmPage;
+
 // Efface le localStorage
 localStorage.clear();
    

@@ -88,7 +88,8 @@ addStorageForm.addEventListener("click",(e) => {
     }
        
     // Validation des informations du formulaire et envoi dans le localstorage
-    
+
+    // Validation email    
 	function validateEmail(value){
        return /^[a-zA-Z0-9-_.]+[@]{1}[a-zA-Z0-9-_.]+[.]{1}[a-z]{2,10}$/.test(value);
     }	      
@@ -97,9 +98,10 @@ addStorageForm.addEventListener("click",(e) => {
         alert('Veuillez remplir tous les champs!')  
     } else if (!validateEmail($email.value)) {
         alert ("Adresse mail non valide")
-    } else {         
+    } else {  
+        //envoi le formulaire dans le storage       
         localStorage.setItem("form", JSON.stringify(contact)); 
-        //envoi le formulaire dans le storage
+        //envoi des id produit dans le local storage
         let products = [];
         for (let l = 0; l < itemsBasket.length; l++) {
 
@@ -122,13 +124,11 @@ addStorageForm.addEventListener("click",(e) => {
         })
         .then (Response => Response.json())
         .then(json => {console.log(json)
-
             // Stock la réponse dans le storage
             localStorage.setItem("order_Id",json.orderId);
 
             // page de confirmation
-            window.location = "confirm.html";
-                
+            window.location = "confirm.html";                
         })
         .catch(() => {
             alert(error)
